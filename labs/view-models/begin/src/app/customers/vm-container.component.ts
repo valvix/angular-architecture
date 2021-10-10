@@ -42,6 +42,7 @@ export class VmContainerComponent {
   selectedVm: CustomerVm;
 
   // Add "showDeleted" boolean property
+  showDeleted: boolean;
 
   constructor(private dataService: CustomerOrdersDataService) {
     this.createVm$();
@@ -52,7 +53,9 @@ export class VmContainerComponent {
     this.vms$ = this.dataService.customers$.pipe(
       map(customers =>
         // Filter customers before mapping to include or exclude deleted customers based on showDeleted flag.
-        customers.map(customer => CustomerVm.create(customer))
+        customers
+          .filter((customer) => this.showDeleted || !customer.isDeleted)
+          .map(customer => CustomerVm.create(customer))
       )
     );
   }
@@ -79,7 +82,7 @@ export class VmContainerComponent {
 
   // The toggleShowDeleted method should (a) toggle the flag and (b) re-create the ViewModel observable
   toggleShowDeleted() {
-
-    
+    this.showDeleted = !this.showDeleted;
+    this.createVm$();
   }
 }
