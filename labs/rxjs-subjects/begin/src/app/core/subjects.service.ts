@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 
 @Injectable({
@@ -9,7 +9,7 @@ export class SubjectsService {
 
   //Define Subject and Observable properties here
   public observable$: Observable<string>;
-  private subject$: Subject<string>;
+  private subject$: BehaviorSubject<string>;
 
   constructor() {
     this.init();
@@ -17,7 +17,7 @@ export class SubjectsService {
 
   init() {
     // Create Subject and Observable Here 
-    this.subject$ = new Subject();
+    this.subject$ = new BehaviorSubject(null);
     this.observable$ = this.subject$.asObservable();
 
     // Create interval here
