@@ -8,7 +8,7 @@ import { Observable, Subject } from 'rxjs';
 export class SubjectsService {
 
   //Define Subject and Observable properties here
-  public obervable$: Observable<string>;
+  public observable$: Observable<string>;
   private subject$: Subject<string>;
 
   constructor() {
@@ -18,7 +18,7 @@ export class SubjectsService {
   init() {
     // Create Subject and Observable Here 
     this.subject$ = new Subject();
-    this.obervable$ = this.subject$.asObservable();
+    this.observable$ = this.subject$.asObservable();
 
     // Create interval here
     setInterval(() => {
