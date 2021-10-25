@@ -12,13 +12,19 @@ import { CustomersService } from './customers.service';
 export class CustomersComponent implements OnInit {
     title = 'Customers';
 
+    public customers$: Observable<Customer[]>;
+    public loading$: Observable<boolean>;
 
-    constructor() {
-
+    constructor(private readonly customerService: CustomersService) {
+        this.loading$ = this.customerService.loading$;
     }
 
     ngOnInit() {
+        this.getCustomers();
+    }
 
+    private getCustomers(): void {
+        this.customers$ = this.customerService.getAll();
     }
 
 }
