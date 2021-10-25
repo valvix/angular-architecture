@@ -49,10 +49,13 @@ export function reducer(
     }
 
     // Add the ADD_CUSTOMERS_SUCCESS Reducer Here
-
-
-
-    
+    case CustomerActions.GET_CUSTOMERS_SUCCESS: {
+      return {
+        ...state,
+        customers: action.payload,
+        loading: false
+      }
+    }
 
     case CustomerActions.GET_CUSTOMER: {
       return { ...state, loading: true };
