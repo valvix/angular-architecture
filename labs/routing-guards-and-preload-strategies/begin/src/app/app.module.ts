@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { CoreModule, PreloadSelectedModulesList } from './core';
+import { CoreModule, NetworkAwarePreloadStrategy } from './core';
 import { routes } from './routes';
 
 @NgModule({
@@ -17,8 +17,8 @@ import { routes } from './routes';
     RouterModule.forRoot(routes, {
       // Uncomment the line of code below. Put the Preload Strategy here
       // preloadingStrategy: PreloadAllModules,
-      preloadingStrategy: PreloadSelectedModulesList,
-      // preloadingStrategy: NetworkAwarePreloadStrategy,
+      // preloadingStrategy: PreloadSelectedModulesList,
+      preloadingStrategy: NetworkAwarePreloadStrategy,
       // preloadingStrategy: PreloadAllModules,
       relativeLinkResolution: 'legacy',
     }),
