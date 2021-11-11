@@ -12,6 +12,7 @@ import { httpInterceptorProviders } from './interceptors';
 @NgModule({
   declarations: [AppComponent, coreComponents, heroComponents],
   imports: [BrowserModule, HttpClientModule, SharedModule, AppStoreModule],
+  //interceptors provided here
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })

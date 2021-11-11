@@ -15,7 +15,8 @@ const multi = true;
 export const httpInterceptorProviders = [
   { provide, useClass: AuthInterceptor, multi },
   // CSRF interceptor can go here
+  { provide, useClass: CSRFInterceptor, multi },
   { provide, useClass: LogHeadersInterceptor, multi },
   // Response interceptor can go here
-  { provide, useClass: LogResponseTimeInterceptor, multi}
+  { provide, useClass: LogResponseTimeInterceptor, multi }
 ];
